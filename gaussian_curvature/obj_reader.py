@@ -1,3 +1,5 @@
+import numpy as np
+
 def read_obj(file_name: str):
     vertices: list[tuple[float]] = []
     normals: list[tuple[float]] = []
@@ -16,7 +18,7 @@ def read_obj(file_name: str):
             elif coords[0] == 'f':
                 faces.append([int(c.split('/')[0]) - 1 for c in coords[1:]])
     
-    return vertices, normals, faces
+    return np.array(vertices), np.array(normals), np.array(faces)
 
 
 
