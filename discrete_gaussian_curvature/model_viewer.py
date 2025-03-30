@@ -22,8 +22,7 @@ if file.is_file():
 else:
     angles = discrete_gaussian_curvature(V, F)
     np.save("../objects/" + model_name, np.array(angles))
-angles = discrete_gaussian_curvature(V, F)
-
+    
 colors = np.empty((V.shape[0], 3))
 angles = (angles + abs(np.min(angles))) / (np.max(angles) + abs(np.min(angles)))
 for i, angle in enumerate(angles):
