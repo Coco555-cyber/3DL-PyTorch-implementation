@@ -22,12 +22,12 @@ if file.is_file():
 else:
     angles = discrete_gaussian_curvature(V, F)
     np.save("../objects/" + model_name, np.array(angles))
-    
+
 colors = np.empty((V.shape[0], 3))
 angles = (angles + abs(np.min(angles))) / (np.max(angles) + abs(np.min(angles)))
 for i, angle in enumerate(angles):
-    colors[i] = np.array(color_maps.viridis_cm[int(angle[0] * 255)])
-    # colors[i] = np.array(colorsys.hsv_to_rgb((1 - angle[0]) * 0.75, 1, 1))
+    # colors[i] = np.array(color_maps.viridis_cm[int(angle[0] * 255)])
+    colors[i] = np.array(colorsys.hsv_to_rgb((1 - angle[0]) * 0.75, 1, 1))
 
 ps.init()
 ps_mesh = ps.register_surface_mesh("my mesh", V, F, smooth_shade=False)
